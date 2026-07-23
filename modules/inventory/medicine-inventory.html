@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Inventory - HMCMS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <div class="d-flex">
+        <!-- SIDEBAR -->
+        <nav class="sidebar p-3 d-flex flex-column">
+            <div class="mb-4 d-flex align-items-center gap-2">
+                <img src="../../assets/images/swasthyasetu-logo.png" alt="Swasthya Setu Logo" style="height: 38px; width: 38px; border-radius: 50%; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.2);" />
+                <div>
+                    <h6 class="text-white mb-0" style="font-weight: 800; font-size: 1rem;">Swasthya Setu</h6>
+                    <small class="text-white-50 d-block" style="font-size: 0.62rem; line-height: 1;">Connecting Communities</small>
+                </div>
+            </div>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item"><a href="../doctors/doctor-scheduling.html" class="nav-link"><i class="fa-solid fa-user-doctor me-2"></i> Scheduling</a></li>
+                <li><a href="../health_workers/health-worker-allocation.html" class="nav-link"><i class="fa-solid fa-users me-2"></i> Allocation</a></li>
+                <li><a href="../inventory/medicine-inventory.html" class="nav-link"><i class="fa-solid fa-pills me-2"></i> Inventory</a></li>
+                <li><a href="../notifications/camp-notifications.html" class="nav-link"><i class="fa-solid fa-bullhorn me-2"></i> Notifications</a></li>
+            </ul>
+            <hr>
+            <a href="#" class="nav-link"><i class="fa-solid fa-right-from-bracket me-2"></i> Logout</a>
+        </nav>
+
+        <!-- MAIN CONTENT WRAPPER -->
+        <div class="flex-grow-1">
+            <header class="top-header p-3 d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center gap-3">
+                    <img src="../../assets/images/swasthyasetu-logo.jpeg" alt="Swasthya Setu Logo" class="brand-logo" style="height:44px; width:auto; display:inline-block;" />
+                    <div class="ekg-banner-wrapper d-none d-md-flex align-items-center">
+                        <svg class="ekg-svg" viewBox="0 0 300 40" width="180" height="26">
+                            <path class="ekg-path" d="M0,20 L40,20 L50,10 L60,30 L70,5 L80,35 L90,20 L140,20 L150,10 L160,30 L170,5 L180,35 L190,20 L300,20" stroke="#5DCAA5" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-outline-light rounded-pill px-3 py-1 btn-sm theme-toggle-btn d-flex align-items-center" type="button">
+                        <i class="fa-solid fa-moon me-1"></i> Dark Mode
+                    </button>
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="fa-solid fa-user-circle me-1"></i> Admin User</button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
+            <main class="p-4" id="page-content">
+                <h4 class="mb-4 gradient-heading"><i class="fa-solid fa-pills me-2 text-accent"></i> Medicine Inventory</h4>
+
+                <div class="row g-3 mb-4 reveal-stagger">
+                    <div class="col-md-4">
+                        <div class="metric-strip-card">
+                            <div class="metric-icon bg-warning text-dark"><i class="fa-solid fa-box-archive"></i></div>
+                            <div>
+                                <small class="text-muted d-block">Medicine Categories</small>
+                                <span class="fw-bold fs-6">Tablets, Syrup, Injections</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="metric-strip-card">
+                            <div class="metric-icon bg-success text-white"><i class="fa-solid fa-cubes-stacked"></i></div>
+                            <div>
+                                <small class="text-muted d-block">Inventory Health</small>
+                                <span class="fw-bold fs-6 text-success"><span class="live-radar-dot"></span> Stock Operational</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="metric-strip-card">
+                            <div class="metric-icon bg-primary text-white"><i class="fa-solid fa-boxes-packing"></i></div>
+                            <div>
+                                <small class="text-muted d-block">Stock Management</small>
+                                <span class="fw-bold fs-6">Real-Time Audit Trail</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-4 shadow-sm text-center" style="animation:revealItem 0.5s ease forwards; opacity:0; background: var(--content-bg, #ffffff); border-radius: 16px; padding: 6px; border: 1px solid var(--muted-border, #e2e8f0);">
+                    <img src="../../assets/images/inventory-banner.png" class="w-100" style="height: auto; max-height: 320px; object-fit: contain; border-radius: 12px; display: inline-block;" alt="Inventory Banner" />
+                </div>
+
+                <div class="content-card p-4 reveal-stagger">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6>Current Stock Details</h6>
+                        <div>
+                            <input type="text" class="form-control d-inline-block w-auto me-2" id="inventorySearch" placeholder="Search medicine..." />
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMedicineModal"><i class="fa-solid fa-plus me-2"></i> Add New Medicine</button>
+                        </div>
+                    </div>
+                    
+                    <table class="table table-hover border" id="inventoryTable">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Sr.</th>
+                                <th>Medicine Name</th>
+                                <th>Category</th>
+                                <th>Batch No.</th>
+                                <th>Expiry Date</th>
+                                <th>Current Stock</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventoryTableBody">
+                            <!-- Dynamic rows will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Add Medicine Modal -->
+    <div class="modal fade" id="addMedicineModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Medicine</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addMedicineForm" data-api-endpoint="../../api/medicines.php">
+                        <div class="mb-3">
+                            <label class="form-label">Medicine Name</label>
+                            <input type="text" name="med_name" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+                            <select name="category" class="form-select" required>
+                                <option value="Tablet">Tablet</option>
+                                <option value="Capsule">Capsule</option>
+                                <option value="Syrup">Syrup</option>
+                                <option value="Injection">Injection</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Batch No.</label>
+                            <input type="text" name="batch_no" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Expiry Date</label>
+                            <input type="date" name="expiry_date" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Initial Stock Quantity</label>
+                            <input type="number" name="stock_qty" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Save Medicine</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Stock Modal -->
+    <div class="modal fade" id="updateStockModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Update Stock</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="updateStockForm" data-api-endpoint="../../api/stock.php">
+                        <input type="hidden" name="medicine_id" id="update_medicine_id">
+                        <div class="mb-3">
+                            <label class="form-label">Action</label>
+                            <select name="update_type" class="form-select" required>
+                                <option value="add">Add to Stock</option>
+                                <option value="remove">Remove from Stock</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Quantity</label>
+                            <input type="number" name="update_qty" class="form-control" min="1" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Update Stock</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

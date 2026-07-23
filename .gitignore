@@ -1,0 +1,15 @@
+# Logs & Temporary Files
+/logs/*.log
+/uploads/documents/*
+/uploads/images/*
+/uploads/profile/*
+!/uploads/**/.gitkeep
+
+# Environment & Dependencies
+/vendor/
+node_modules/
+hmcms-frontend/node_modules/
+reference_repo/
+.env
+.DS_Store
+Thumbs.db

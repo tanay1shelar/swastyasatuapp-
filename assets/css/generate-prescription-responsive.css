@@ -1,0 +1,300 @@
+/* Generate-prescription responsive corrections.
+   The desktop and printed document remain controlled by prescription.css. */
+
+.app > main,
+.content,
+.print-sheet,
+.print-sheet > *,
+.medicine-print-section {
+  min-width: 0;
+}
+
+.print-sheet {
+  width: 100%;
+}
+
+.medicine-print-section {
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 1100px) {
+  .app > main,
+  .content,
+  .print-sheet {
+    max-width: 100%;
+  }
+
+  .print-sheet {
+    padding: 32px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .app > main {
+    width: 100%;
+    overflow-x: clip;
+  }
+
+  .print-sheet {
+    padding: 28px;
+  }
+
+  .print-medicine-table {
+    width: 650px;
+    min-width: 650px;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .page-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .generate-heading-actions,
+  .generate-actions {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .generate-heading-actions .btn,
+  .generate-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    white-space: normal;
+  }
+
+  .generate-actions .btn:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .print-sheet {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .rx-header {
+    align-items: flex-start !important;
+    flex-direction: column;
+  }
+
+  .rx-header > .d-flex {
+    align-items: flex-start !important;
+    min-width: 0;
+  }
+
+  .rx-header > .text-end {
+    text-align: left !important;
+  }
+
+  .rx-header h2 {
+    font-size: 1.2rem;
+    overflow-wrap: anywhere;
+  }
+
+  .logo-placeholder {
+    flex: 0 0 52px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .print-sheet .row {
+    --bs-gutter-x: 1.25rem;
+    --bs-gutter-y: 1.25rem;
+  }
+
+  .print-sheet .py-4 {
+    padding-top: 1.1rem !important;
+    padding-bottom: 1.1rem !important;
+  }
+
+  .print-medicine-table {
+    width: 620px;
+    min-width: 620px;
+    font-size: 12px;
+  }
+
+  .print-medicine-table th,
+  .print-medicine-table td {
+    padding: 0.6rem 0.5rem;
+    white-space: normal;
+  }
+
+  .verification-block {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+    gap: 14px;
+    align-items: start !important;
+    width: 100%;
+  }
+
+  .verification-block .signature {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .verification-block .qr-placeholder,
+  .verification-block .barcode-placeholder {
+    margin-left: 0 !important;
+  }
+
+  .print-sheet::after {
+    left: 4%;
+    font-size: 58px;
+  }
+
+  .rx-footer {
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .generate-heading-actions,
+  .generate-actions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .generate-actions .btn:last-child {
+    grid-column: auto;
+  }
+
+  .print-sheet {
+    padding: 17px;
+  }
+
+  .rx-header > .d-flex {
+    gap: 0.75rem !important;
+  }
+
+  .logo-placeholder {
+    flex-basis: 46px;
+    width: 46px;
+    height: 46px;
+  }
+
+  .rx-header h2 {
+    font-size: 1.05rem;
+  }
+
+  .print-sheet {
+    font-size: 12.5px;
+  }
+
+  .verification-block {
+    gap: 10px;
+  }
+
+  .verification-block .qr-placeholder {
+    width: 76px;
+    height: 76px;
+  }
+
+  .verification-block .barcode-placeholder {
+    width: 108px;
+  }
+
+  .print-sheet::after {
+    font-size: 44px;
+  }
+}
+
+@media print {
+  .app > main,
+  .content,
+  .print-sheet {
+    width: auto;
+    max-width: none;
+    overflow: visible;
+  }
+
+  .print-sheet {
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .medicine-print-section {
+    overflow: visible;
+  }
+
+  .print-medicine-table {
+    width: 100%;
+    min-width: 0;
+    font-size: inherit;
+  }
+
+  .rx-header {
+    align-items: center !important;
+    flex-direction: row;
+  }
+
+  .rx-header > .text-end {
+    text-align: right !important;
+  }
+
+  .rx-header > .d-flex {
+    align-items: center !important;
+    gap: 1rem !important;
+  }
+
+  .verification-block {
+    display: flex !important;
+    align-items: flex-end !important;
+    gap: 0;
+  }
+
+  .verification-block .signature {
+    grid-column: auto;
+    width: auto;
+  }
+
+  .logo-placeholder {
+    width: 58px;
+    height: 58px;
+    flex: 0 0 auto;
+  }
+
+  .rx-header h2 {
+    font-size: calc(1.325rem + 0.9vw);
+  }
+
+  .print-sheet {
+    font-size: 14px;
+  }
+
+  .print-sheet .row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 1.5rem;
+  }
+
+  .print-sheet .py-4 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  .print-medicine-table th,
+  .print-medicine-table td {
+    padding: 0.5rem;
+  }
+
+  .verification-block .qr-placeholder {
+    width: 84px;
+    height: 84px;
+  }
+
+  .verification-block .barcode-placeholder {
+    width: 116px;
+    margin-left: 0.5rem !important;
+  }
+
+  .print-sheet::after {
+    left: 8%;
+    font-size: 84px;
+  }
+}

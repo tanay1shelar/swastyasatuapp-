@@ -1,0 +1,13 @@
+{
+    "name": "hmcms/swasthya-setu",
+    "description": "Healthcare & Medical Camp Management System (HMCMS)",
+    "type": "project",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "HMCMS\\": "src/"
+        }
+    }
+}

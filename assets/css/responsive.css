@@ -1,0 +1,24 @@
+/* System Responsive Enhancements */
+@media (max-width: 991.98px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .content-card {
+        padding: 1.25rem !important;
+        border-radius: 18px !important;
+    }
+    
+    .table-responsive {
+        border-radius: 14px;
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .btn-responsive-full {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}

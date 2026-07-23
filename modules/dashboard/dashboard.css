@@ -1,0 +1,6 @@
+/* Dashboard Component Specific Styles */
+.dashboard-widget-container {
+    background: rgba(255,255,255,0.95);
+    border-radius: 16px;
+    padding: 1rem;
+}

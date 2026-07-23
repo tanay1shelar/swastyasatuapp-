@@ -1,0 +1,171 @@
+/* Prescription-only responsive corrections.
+   Desktop styling remains owned by prescription.css. */
+
+.app > main,
+.content,
+.rx-workbench,
+.rx-workbench > *,
+#prescriptionForm,
+#prescriptionForm .section-card,
+#prescriptionForm .table-responsive {
+  min-width: 0;
+}
+
+#prescriptionForm,
+#prescriptionForm .table-responsive {
+  width: 100%;
+  max-width: 100%;
+}
+
+#prescriptionForm .table-responsive {
+  display: block;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 1100px) {
+  .app > main,
+  .content,
+  .rx-workbench,
+  #prescriptionForm,
+  .live-preview {
+    max-width: 100%;
+  }
+
+  .rx-workbench {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .live-preview {
+    position: static;
+    margin-top: 18px;
+  }
+
+  .medicine-table {
+    width: 980px;
+    max-width: none;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .app > main {
+    width: 100%;
+    overflow-x: clip;
+  }
+
+  .rx-workbench {
+    display: block;
+    width: 100%;
+  }
+
+  .rx-workbench > #prescriptionForm,
+  .rx-workbench > .live-preview {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #prescriptionForm .section-title {
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  #prescriptionForm .section-title > div {
+    flex: 1 1 260px;
+    min-width: 0;
+  }
+
+  #prescriptionForm .template-select {
+    width: min(100%, 320px);
+    max-width: none;
+  }
+
+  .patient-summary .row {
+    row-gap: 0.9rem;
+  }
+
+  .patient-summary .summary-item,
+  .patient-summary .summary-item strong {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .live-preview .d-flex.justify-content-between {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 767.98px) {
+  #prescriptionForm .section-title .template-select,
+  #prescriptionForm #addMedicine {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #prescriptionForm .row {
+    --bs-gutter-x: 1rem;
+  }
+
+  #prescriptionForm > .d-flex.justify-content-end {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  #prescriptionForm > .d-flex.justify-content-end > .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    white-space: normal;
+  }
+
+  #prescriptionForm > .d-flex.justify-content-end > .btn:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .live-preview {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .safety-alert {
+    align-items: flex-start;
+  }
+
+  .success-modal > div {
+    width: calc(100vw - 28px);
+    padding: 24px 18px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  #prescriptionForm > .d-flex.justify-content-end {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #prescriptionForm > .d-flex.justify-content-end > .btn:last-child {
+    grid-column: auto;
+  }
+
+  .medicine-table {
+    width: 880px;
+    min-width: 880px;
+  }
+
+  .live-preview .d-flex.justify-content-between {
+    flex-direction: column;
+  }
+
+  .preview-brand {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #prescriptionForm .table-responsive {
+    scroll-behavior: auto;
+  }
+}

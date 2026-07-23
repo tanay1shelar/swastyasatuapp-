@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worker Allocation - HMCMS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <div class="d-flex">
+        <!-- SIDEBAR -->
+        <nav class="sidebar p-3 d-flex flex-column">
+            <div class="mb-4 d-flex align-items-center gap-2">
+                <img src="../../assets/images/swasthyasetu-logo.png" alt="Swasthya Setu Logo" style="height: 38px; width: 38px; border-radius: 50%; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.2);" />
+                <div>
+                    <h6 class="text-white mb-0" style="font-weight: 800; font-size: 1rem;">Swasthya Setu</h6>
+                    <small class="text-white-50 d-block" style="font-size: 0.62rem; line-height: 1;">Connecting Communities</small>
+                </div>
+            </div>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item"><a href="../doctors/doctor-scheduling.html" class="nav-link"><i class="fa-solid fa-user-doctor me-2"></i> Scheduling</a></li>
+                <li><a href="../health_workers/health-worker-allocation.html" class="nav-link"><i class="fa-solid fa-users me-2"></i> Allocation</a></li>
+                <li><a href="../inventory/medicine-inventory.html" class="nav-link"><i class="fa-solid fa-pills me-2"></i> Inventory</a></li>
+                <li><a href="../notifications/camp-notifications.html" class="nav-link"><i class="fa-solid fa-bullhorn me-2"></i> Notifications</a></li>
+            </ul>
+            <hr>
+            <a href="#" class="nav-link"><i class="fa-solid fa-right-from-bracket me-2"></i> Logout</a>
+        </nav>
+
+        <!-- MAIN CONTENT WRAPPER -->
+        <div class="flex-grow-1">
+            <header class="top-header p-3 d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center gap-3">
+                    <img src="../../assets/images/swasthyasetu-logo.jpeg" alt="Swasthya Setu Logo" class="brand-logo" style="height:44px; width:auto; display:inline-block;" />
+                    <div class="ekg-banner-wrapper d-none d-md-flex align-items-center">
+                        <svg class="ekg-svg" viewBox="0 0 300 40" width="180" height="26">
+                            <path class="ekg-path" d="M0,20 L40,20 L50,10 L60,30 L70,5 L80,35 L90,20 L140,20 L150,10 L160,30 L170,5 L180,35 L190,20 L300,20" stroke="#5DCAA5" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-outline-light rounded-pill px-3 py-1 btn-sm theme-toggle-btn d-flex align-items-center" type="button">
+                        <i class="fa-solid fa-moon me-1"></i> Dark Mode
+                    </button>
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="fa-solid fa-user-circle me-1"></i> Admin User</button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
+            <main class="p-4" id="page-content">
+                <h4 class="mb-4 gradient-heading"><i class="fa-solid fa-users me-2 text-accent"></i> Health Worker Allocation</h4>
+
+                <div class="row g-3 mb-4 reveal-stagger">
+                    <div class="col-md-4">
+                        <div class="metric-strip-card">
+                            <div class="metric-icon bg-success text-white"><i class="fa-solid fa-users"></i></div>
+                            <div>
+                                <small class="text-muted d-block">Health Workers Allocated</small>
+                                <span class="fw-bold fs-6">Nurses & Lab Techs</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="metric-strip-card">
+                            <div class="metric-icon bg-info text-white"><i class="fa-solid fa-clock"></i></div>
+                            <div>
+                                <small class="text-muted d-block">Shift Schedules</small>
+                                <span class="fw-bold fs-6">Morning & Evening Shifts</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="metric-strip-card">
+                            <div class="metric-icon bg-primary text-white"><i class="fa-solid fa-check-double"></i></div>
+                            <div>
+                                <small class="text-muted d-block">Staff Coverage</small>
+                                <span class="fw-bold fs-6 text-success"><span class="live-radar-dot"></span> 100% Assigned</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-4 shadow-sm text-center" style="animation:revealItem 0.5s ease forwards; opacity:0; background: var(--content-bg, #ffffff); border-radius: 16px; padding: 6px; border: 1px solid var(--muted-border, #e2e8f0);">
+                    <img src="../../assets/images/allocation-banner.png" class="w-100" style="height: auto; max-height: 320px; object-fit: contain; border-radius: 12px; display: inline-block;" alt="Allocation Banner" />
+                </div>
+
+                <div class="content-card p-4 mb-4">
+                    <h6 class="mb-3">Allocate Health Worker to Camp</h6>
+                    <form id="workerAllocationForm" data-api-endpoint="../../api/allocations.php" class="row g-3">
+                        <div class="col-md-3">
+                            <label class="form-label text-muted small">Select Camp</label>
+                            <select name="camp_id" class="form-select" required>
+                                <option value="" disabled selected>Choose a camp...</option>
+                                <option value="1">City Care Camp - Pune</option>
+                                <option value="2">Rural Health Camp - Shirur</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label text-muted small">Select Worker</label>
+                            <select name="worker_id" class="form-select" required>
+                                <option value="" disabled selected>Choose a worker...</option>
+                                <option value="W201">Sunita Patel (Nurse)</option>
+                                <option value="W202">Ramesh Kumar (Lab Tech)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label text-muted small">Shift</label>
+                            <select name="shift" class="form-select" required>
+                                <option value="Morning">Morning (8 AM - 2 PM)</option>
+                                <option value="Evening">Evening (2 PM - 8 PM)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 d-flex align-items-end">
+                            <button type="submit" class="btn btn-primary w-100">Allocate Worker</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="content-card p-4 reveal-stagger">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="mb-0">Allocated Workers</h6>
+                        <input type="text" class="form-control w-25" id="workerSearch" placeholder="Filter allocations..." />
+                    </div>
+                    <table class="table table-hover border">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Camp ID</th>
+                                <th>Worker ID</th>
+                                <th>Shift Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="allocationsTableBody">
+                            <!-- Dynamic rows will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

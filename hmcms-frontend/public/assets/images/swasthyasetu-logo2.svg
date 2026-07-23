@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <circle cx="256" cy="256" r="250" fill="#ffffff"/>
+  <g transform="translate(60,60)">
+    <path d="M130 20c30 0 45 24 45 48s-15 48-45 48-45-24-45-48 15-48 45-48z" fill="#26215C"/>
+    <path d="M220 120c0 0 28 18 20 56s-46 42-76 42-76-18-76-42 20-56 20-56" fill="#5DCAA5" opacity="0.9"/>
+    <rect x="60" y="220" width="300" height="60" rx="10" fill="#EF9F27"/>
+    <text x="80" y="260" fill="#412402" font-family="Georgia, serif" font-size="40">SwasthyaSetu</text>
+  </g>
+</svg>
