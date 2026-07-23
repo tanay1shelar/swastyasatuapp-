@@ -1,0 +1,2 @@
+<?php
+// Global helper functions

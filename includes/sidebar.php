@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php $currentPage = basename(dirname($_SERVER['PHP_SELF'])); ?>
 <nav id="sidebar">
     <style>
@@ -62,3 +63,7 @@
     </div>
 </nav>
 
+=======
+<?php
+// Global Sidebar template
+>>>>>>> 2ff1de8b8d80164482be12236c16d97e1d541f5d

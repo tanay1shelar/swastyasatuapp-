@@ -1,3 +1,4 @@
+<<<<<<< HEAD
             </div> <!-- /.main-content -->
         </div> <!-- /#content-wrapper -->
     </div> <!-- /#wrapper -->
@@ -28,3 +29,7 @@
     <script src="../../assets/js/superadmin.js?v=2"></script>
 </body>
 </html>
+=======
+<?php
+// Global Footer template
+>>>>>>> 2ff1de8b8d80164482be12236c16d97e1d541f5d
