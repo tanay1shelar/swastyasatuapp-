@@ -11,5 +11,8 @@ node_modules/
 hmcms-frontend/node_modules/
 reference_repo/
 .env
+.env.*
+.venv/
+.vscode/
 .DS_Store
 Thumbs.db
