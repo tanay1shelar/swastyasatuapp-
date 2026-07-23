@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "hmcms/swasthyasetu",
   "description": "Healthcare and Medical Camp Management System",
   "type": "project",
@@ -6,4 +7,9 @@
   "require": {
     "php": ">=7.4"
   }
+=======
+  "name": "swasthya-setu/portal",
+  "description": "Swasthya Setu Portal",
+  "require": {}
+>>>>>>> origin/main
 }

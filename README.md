@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Healthcare & Medical Camp Management System (HMCMS) - SwasthyaSetu
 
 SwasthyaSetu (HMCMS) is an enterprise-grade clinical administration and medical camp management web application. Designed for healthcare workers, camp managers, physicians, and administrators, the system coordinates mobile healthcare units, patient intake registrations, biometric ID verifications, queue triage attendance, medical inventory tracking, and XLSX reporting.
@@ -110,3 +111,7 @@ hmcms/
 * **SQL Injection Immunity**: 100% PDO prepared statements with bound parameters.
 * **XSS Defense**: Strict HTML output escaping with `htmlspecialchars()`.
 * **Session Hardening**: HTTP-only cookies, automatic session regeneration, and RBAC authorization guards.
+=======
+# Healthcare-Medical-Camp-Management-System
+The Healthcare &amp; Medical Camp Management System (HMCMS) is a web-based application  designed to simplify the planning, management, and monitoring of medical camps organized in  rural and semi-urban areas. 
+>>>>>>> origin/main

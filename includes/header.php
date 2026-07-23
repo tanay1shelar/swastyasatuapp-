@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 /**
  * Healthcare & Medical Camp Management System (HMCMS)
  * Shared HTML Head / Header File
@@ -52,3 +53,6 @@ if (!isset($pageTitle)) {
 
 <!-- Application Master Layout Container -->
 <div class="app-container">
+=======
+// Global Header template
+>>>>>>> origin/main

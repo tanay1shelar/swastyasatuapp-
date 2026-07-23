@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard - Healthcare & Medical Camp Management System</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../../assets/../../assets/css/style.css?v=1.3" rel="stylesheet">
+</head>
+<body>
+    <!-- Page Loading Animation -->
+    <div class="page-loader">
+        <div class="spinner-medical"></div>
+    </div>
+
+    <!-- App Wrapper -->
+    <div class="app-wrapper">
+        <!-- Sidebar -->
+        <aside class="app-sidebar">
+            <div class="sidebar-logo">
+                <img src="../../assets/images/logo/logo.png" alt="Logo">
+                <span>HMCMS</span>
+            </div>
+            <div class="sidebar-menu">
+                <a href="#" class="menu-item active">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="menu-item" onclick="showToast('Navigation', 'Assigned camps module')">
+                    <i class="fas fa-clinic-medical"></i>
+                    <span>Assigned Camps</span>
+                </a>
+                <a href="#" class="menu-item" onclick="showToast('Navigation', 'Patients consultation list')">
+                    <i class="fas fa-user-injured"></i>
+                    <span>Patients</span>
+                </a>
+                <a href="#" class="menu-item" onclick="showToast('Navigation', 'Medical Records history')">
+                    <i class="fas fa-notes-medical"></i>
+                    <span>Medical Records</span>
+                </a>
+                <a href="#" class="menu-item" onclick="showToast('Navigation', 'Diagnosis history module')">
+                    <i class="fas fa-stethoscope"></i>
+                    <span>Diagnosis</span>
+                </a>
+                <a href="#" class="menu-item" onclick="showToast('Navigation', 'Prescriptions list')">
+                    <i class="fas fa-prescription"></i>
+                    <span>Prescriptions</span>
+                </a>
+                <a href="#" class="menu-item" onclick="showToast('Navigation', 'Appointments calendar')">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Appointments</span>
+                </a>
+                <a href="#" class="menu-item" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+            <div class="sidebar-footer">
+                <a href="#" class="menu-item logout-trigger text-danger">
+                    <i class="fas fa-sign-out-alt text-danger"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="app-header d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-light p-2 border-0" id="sidebarToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <!-- Search Bar -->
+                    <div class="search-box-wrapper d-none d-md-block">
+                        <i class="fas fa-search"></i>
+                        <input type="text" class="form-control" id="dashboardTableSearch" placeholder="Search patient queue...">
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center gap-3">
+                    <!-- Live Time & Date -->
+                    <div id="headerClock" class="header-clock d-none d-lg-block me-3"></div>
+
+                    <!-- Messages Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn btn-light rounded-circle position-relative p-2 border-0" type="button" data-bs-toggle="dropdown">
+                            <i class="far fa-envelope"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-light" style="padding: 0.35em;">
+                                3
+                            </span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end shadow-sm border-0 p-3" style="width: 280px; border-radius: 12px;">
+                            <h6 class="mb-3 fw-bold">Recent Messages</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <a href="#" class="text-decoration-none text-dark d-flex gap-2 p-2 rounded hover-bg-light">
+                                    <div class="flex-shrink-0"><i class="fas fa-circle text-primary mt-1" style="font-size: 8px;"></i></div>
+                                    <div>
+                                        <p class="mb-0 fw-bold small">Nurse Clara</p>
+                                        <span class="text-muted small">Patient #104 vitals recorded.</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn btn-light rounded-circle position-relative p-2 border-0" type="button" data-bs-toggle="dropdown">
+                            <i class="far fa-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning border border-light" style="padding: 0.35em;">
+                                2
+                            </span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end shadow-sm border-0 p-3" style="width: 320px; border-radius: 12px;">
+                            <h6 class="mb-3 fw-bold">Notifications</h6>
+                            <div class="d-flex flex-column gap-3">
+                                <div class="d-flex gap-2 align-items-start">
+                                    <span class="stat-icon green p-1 rounded-circle flex-shrink-0"><i class="fas fa-calendar-check fs-6"></i></span>
+                                    <div>
+                                        <p class="mb-0 fw-bold small">Appointment Reminder</p>
+                                        <span class="text-muted small">Shift starts at Camp Sunshine 09:00 AM.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Profile Menu -->
+                    <div class="dropdown">
+                        <div class="profile-dropdown-btn" data-bs-toggle="dropdown">
+                            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=150" alt="Doctor Profile">
+                            <div class="d-none d-lg-block">
+                                <h6 class="mb-0" id="navUsername" style="font-size: 0.85rem; font-weight: 600;">Dr. Alan Carter</h6>
+                                <span class="text-muted small">General Physician</span>
+                            </div>
+                        </div>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2 p-2" style="border-radius: 10px;">
+                            <li><a class="dropdown-item py-2" href="#" data-bs-toggle="modal" data-bs-target="#editProfileModal"><i class="far fa-user me-2"></i>My Profile</a></li>
+                            <li><a class="dropdown-item py-2" href="#" data-bs-toggle="modal" data-bs-target="#changePasswordModal"><i class="fas fa-key me-2"></i>Change Password</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item py-2 logout-trigger text-danger" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Body -->
+            <div class="content-body">
+                <!-- Welcome Section -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h4 class="mb-1 text-dark fw-bold">Doctor Consultation Desk</h4>
+                        <p class="text-muted mb-0">Examine patients, record diagnostic records, and issue digital prescriptions.</p>
+                    </div>
+                    <span class="badge bg-success-light text-success p-2 rounded-pill"><i class="fas fa-check-circle me-1"></i> Active Shift: Camp Sunshine</span>
+                </div>
+
+                <!-- Metrics Grid -->
+                <div class="row g-3 mb-4">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card stat-card blue h-100 p-3">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <span class="text-muted small fw-semibold text-uppercase">Assigned Camps</span>
+                                    <h3 class="mb-0 mt-1 fw-bold">3</h3>
+                                </div>
+                                <div class="stat-icon blue">
+                                    <i class="fas fa-clinic-medical"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card stat-card green h-100 p-3">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <span class="text-muted small fw-semibold text-uppercase">Today's Patients</span>
+                                    <h3 class="mb-0 mt-1 fw-bold">18</h3>
+                                </div>
+                                <div class="stat-icon green">
+                                    <i class="fas fa-user-injured"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card stat-card teal h-100 p-3">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <span class="text-muted small fw-semibold text-uppercase">Issued Prescriptions</span>
+                                    <h3 class="mb-0 mt-1 fw-bold">142</h3>
+                                </div>
+                                <div class="stat-icon teal">
+                                    <i class="fas fa-prescription"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card stat-card warning h-100 p-3">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <span class="text-muted small fw-semibold text-uppercase">Diagnosed Cases</span>
+                                    <h3 class="mb-0 mt-1 fw-bold">89</h3>
+                                </div>
+                                <div class="stat-icon warning">
+                                    <i class="fas fa-stethoscope"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="row g-4 mb-4">
+                    <!-- Chart 1: Disease Stats -->
+                    <div class="col-lg-6">
+                        <div class="card p-3 border-0 h-100">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <h6 class="mb-0 fw-bold">Disease Statistics Breakdown</h6>
+                                <span class="badge bg-light text-primary">Camp Analysis</span>
+                            </div>
+                            <div style="height: 300px; position: relative;">
+                                <canvas id="diseaseStatsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Chart 2: Consultations trend -->
+                    <div class="col-lg-6">
+                        <div class="card p-3 border-0 h-100">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <h6 class="mb-0 fw-bold">Monthly Patient Consultations</h6>
+                                <span class="badge bg-light text-success">2026 Trend</span>
+                            </div>
+                            <div style="height: 300px; position: relative;">
+                                <canvas id="doctorConsultationsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Responsive Tables -->
+                <div class="card border-0 mb-4">
+                    <div class="card-header bg-white border-0 py-3 d-flex align-items-center justify-content-between">
+                        <h6 class="mb-0 fw-bold text-dark">Today's Patient Consultation Queue</h6>
+                        <span class="text-muted small">4 Patients Waiting</span>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light text-muted">
+                                <tr>
+                                    <th>Token</th>
+                                    <th>Patient Name</th>
+                                    <th>Age / Gender</th>
+                                    <th>Vitals (BP / Temp)</th>
+                                    <th>Symptoms</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="badge bg-secondary">#TK-101</span></td>
+                                    <td><span class="fw-semibold text-dark">Robert Vance</span></td>
+                                    <td>45 / Male</td>
+                                    <td>120/80 mmHg | 98.6°F</td>
+                                    <td>Fever, Dry Cough</td>
+                                    <td><span class="badge badge-warning">Waiting</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#prescriptionModal" onclick="openPrescriptionModal('Robert Vance', 'TK-101')">Examine & Prescribe</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-secondary">#TK-102</span></td>
+                                    <td><span class="fw-semibold text-dark">Maria Garcia</span></td>
+                                    <td>32 / Female</td>
+                                    <td>110/70 mmHg | 99.1°F</td>
+                                    <td>Severe Headache, Nausea</td>
+                                    <td><span class="badge badge-warning">Waiting</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#prescriptionModal" onclick="openPrescriptionModal('Maria Garcia', 'TK-102')">Examine & Prescribe</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-secondary">#TK-103</span></td>
+                                    <td><span class="fw-semibold text-dark">Samuel Oak</span></td>
+                                    <td>61 / Male</td>
+                                    <td>145/95 mmHg | 98.4°F</td>
+                                    <td>Joint Pain, High BP</td>
+                                    <td><span class="badge badge-success">Completed</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-light" onclick="showToast('Record View', 'Viewing historical diagnostic notes for Samuel Oak')">View History</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="app-footer">
+                <p class="mb-0">&copy; 2026 Healthcare & Medical Camp Management System | Developed for College Project</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Modals System -->
+    <!-- 1. Edit Profile Modal -->
+    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="profileEditForm">
+                    <div class="modal-header border-0 pb-0">
+                        <h5 class="modal-title fw-bold">Edit Profile Info</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control" value="Dr. Alan Carter" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Specialization</label>
+                            <input type="text" class="form-control" value="General Physician" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-control" value="a.carter@hospital.org" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" value="+1 (555) 012-4411" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0 pt-0">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Change Password Modal -->
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="changePasswordForm">
+                    <div class="modal-header border-0 pb-0">
+                        <h5 class="modal-title fw-bold">Change Password</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="oldPassword" class="form-label">Old Password</label>
+                            <input type="password" class="form-control" id="oldPassword" placeholder="••••••••" required>
+                            <div class="invalid-feedback">Old password is required.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newPassword" class="form-label">New Password</label>
+                            <input type="password" class="form-control" id="newPassword" placeholder="Minimum 8 characters" required>
+                            <div class="invalid-feedback">Password must be at least 8 characters long.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="••••••••" required>
+                            <div class="invalid-feedback">Passwords do not match.</div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0 pt-0">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Update Password</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Prescription Modal -->
+    <div class="modal fade" id="prescriptionModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <form onsubmit="event.preventDefault(); bootstrap.Modal.getInstance(document.getElementById('prescriptionModal')).hide(); showToast('Prescription Generated', 'Diagnosis and digital prescription issued successfully!');">
+                    <div class="modal-header border-0 pb-0">
+                        <h5 class="modal-title fw-bold"><i class="fas fa-stethoscope text-primary me-2"></i>Consultation & Prescription Record</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row bg-light p-3 rounded mb-3">
+                            <div class="col-md-6">
+                                <span class="text-muted small">Patient Name:</span>
+                                <h6 class="fw-bold mb-0" id="prescPatientName">Robert Vance</h6>
+                            </div>
+                            <div class="col-md-6 text-md-end">
+                                <span class="text-muted small">Token Number:</span>
+                                <h6 class="fw-bold mb-0" id="prescToken">#TK-101</h6>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Diagnosis</label>
+                            <input type="text" class="form-control" placeholder="e.g. Acute Upper Respiratory Tract Infection" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Prescribed Medicines</label>
+                            <textarea class="form-control" rows="3" placeholder="1. Paracetamol 500mg - 1 tablet 3x daily after meals&#10;2. Amoxicillin 250mg - 1 tablet 2x daily" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Doctor Instructions / Advice</label>
+                            <textarea class="form-control" rows="2" placeholder="Drink plenty of warm fluid, rest for 3 days. Follow up if fever persists."></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0 pt-0">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-print me-1"></i>Issue Prescription</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Dashboard JS -->
+    <script src="../../assets/../../assets/../../assets/js/dashboard.js"></script>
+    <!-- Charts Initialization -->
+    <script>
+        function openPrescriptionModal(name, token) {
+            document.getElementById('prescPatientName').innerText = name;
+            document.getElementById('prescToken').innerText = token;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Chart 1: Disease Stats Breakdown
+            const ctx1 = document.getElementById('diseaseStatsChart').getContext('2d');
+            new Chart(ctx1, {
+                type: 'polarArea',
+                data: {
+                    labels: ['Hypertension', 'Diabetes', 'Respiratory', 'Viral Fever', 'Dental'],
+                    datasets: [{
+                        data: [35, 25, 40, 60, 20],
+                        backgroundColor: [
+                            'rgba(37, 99, 235, 0.7)',
+                            'rgba(16, 185, 129, 0.7)',
+                            'rgba(245, 158, 11, 0.7)',
+                            'rgba(239, 68, 68, 0.7)',
+                            'rgba(13, 148, 136, 0.7)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+
+            // Chart 2: Monthly Patient Consultations
+            const ctx2 = document.getElementById('doctorConsultationsChart').getContext('2d');
+            new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Patients Consulted',
+                        data: [45, 80, 65, 110, 95, 130],
+                        backgroundColor: '#10b981',
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: { grid: { color: '#f1f5f9' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

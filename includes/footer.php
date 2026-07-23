@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 /**
  * Healthcare & Medical Camp Management System (HMCMS)
  * Shared Footer Component
@@ -40,3 +41,6 @@ if (!defined('APP_NAME')) {
 
 </body>
 </html>
+=======
+// Global Footer template
+>>>>>>> origin/main

@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 /**
  * Healthcare & Medical Camp Management System (HMCMS)
  * Core Configuration File
@@ -140,3 +141,6 @@ function displayMaintenancePage() {
     </html>
     <?php
 }
+=======
+// Application Configurations
+>>>>>>> origin/main
