@@ -1,1 +1,6 @@
-/* Dashboard specific styles */
+/**
+ * Healthcare & Medical Camp Management System (HMCMS)
+ * Dashboard Stylesheet (dashboard.css)
+ */
+
+@import url('layouts.css');
