@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
  * Healthcare & Medical Camp Management System (HMCMS)
  * Central AJAX Helper Script (assets/js/ajax.js)
@@ -10,6 +9,3 @@ window.HMCMS_AJAX = {
         }
     }
 };
-=======
-// AJAX Helper Scripts
->>>>>>> origin/main

@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 /**
  * Healthcare & Medical Camp Management System (HMCMS)
  * Shared Layout & Service Function Wrappers
@@ -30,6 +29,3 @@ function renderBreadcrumbItem($title, $url = '#', $isActive = false) {
         echo '<li class="breadcrumb-custom-item"><a href="' . htmlspecialchars($url) . '">' . htmlspecialchars($title) . '</a></li>';
     }
 }
-=======
-// Global helper functions
->>>>>>> origin/main

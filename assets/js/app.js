@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
  * Healthcare & Medical Camp Management System (HMCMS)
  * Master Application & UI Interaction Controller (app.js)
@@ -98,6 +97,3 @@ function initCardPointerTilt() {
         });
     });
 }
-=======
-// Global App JavaScript
->>>>>>> origin/main

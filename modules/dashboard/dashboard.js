@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
  * Healthcare & Medical Camp Management System (HMCMS)
  * Centralized Dashboard Controller Module (dashboard.js)
@@ -358,6 +357,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
     refreshData();
 });
-=======
-// Dashboard module JS
->>>>>>> origin/main

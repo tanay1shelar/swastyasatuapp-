@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 /**
  * Healthcare & Medical Camp Management System (HMCMS)
  * Centralized Application Constants
@@ -57,6 +56,3 @@ define('STATUS_PRESENT', 'Present');
 define('STATUS_TRIAGE', 'In Triage');
 define('STATUS_CONSULTATION', 'In Consultation');
 define('STATUS_COMPLETED', 'Completed');
-=======
-// Application Constants
->>>>>>> origin/main

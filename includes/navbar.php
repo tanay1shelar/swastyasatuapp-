@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 /**
  * Healthcare & Medical Camp Management System (HMCMS)
  * Shared Navbar/Header Component
@@ -128,6 +127,3 @@ $user = getCurrentUser();
             </div>
         </div>
     </div>
-=======
-// Global Navigation Bar template
->>>>>>> origin/main

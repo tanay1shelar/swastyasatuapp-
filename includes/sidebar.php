@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 /**
  * Healthcare & Medical Camp Management System (HMCMS)
  * Shared Sidebar Component
@@ -137,6 +136,3 @@ $user = getCurrentUser();
         </div>
     </div>
 </aside>
-=======
-// Global Sidebar template
->>>>>>> origin/main
