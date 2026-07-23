@@ -27,8 +27,11 @@ if (empty($usernameOrEmail) || empty($password)) {
 
 try {
     // Query database for user by username or email
-    $stmt = $pdo->prepare("SELECT id, full_name, email, username, password_hash, role FROM users WHERE username = :identifier OR email = :identifier LIMIT 1");
-    $stmt->execute(['identifier' => $usernameOrEmail]);
+    $stmt = $pdo->prepare("SELECT id, full_name, email, username, password_hash, role FROM users WHERE username = :username_identifier OR email = :email_identifier LIMIT 1");
+    $stmt->execute([
+        'username_identifier' => $usernameOrEmail,
+        'email_identifier' => $usernameOrEmail
+    ]);
     $user = $stmt->fetch();
 
     if ($user && password_verify($password, $user['password_hash'])) {
