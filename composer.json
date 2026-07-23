@@ -1,9 +1,5 @@
 {
-  "name": "hmcms/swasthyasetu",
-  "description": "Healthcare and Medical Camp Management System",
-  "type": "project",
-  "license": "MIT",
-  "require": {
-    "php": ">=7.4"
-  }
+  "name": "swasthya-setu/portal",
+  "description": "Swasthya Setu Portal",
+  "require": {}
 }
