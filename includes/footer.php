@@ -1,0 +1,2 @@
+<?php
+// Global Footer template

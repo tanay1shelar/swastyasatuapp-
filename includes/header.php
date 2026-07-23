@@ -1,0 +1,2 @@
+<?php
+// Global Header template
