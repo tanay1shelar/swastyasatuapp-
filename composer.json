@@ -1,0 +1,9 @@
+{
+  "name": "hmcms/swasthyasetu",
+  "description": "Healthcare and Medical Camp Management System",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=7.4"
+  }
+}

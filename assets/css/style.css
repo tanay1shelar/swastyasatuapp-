@@ -1,0 +1,9 @@
+/**
+ * Healthcare & Medical Camp Management System (HMCMS)
+ * Master Style Sheet (style.css)
+ */
+
+@import url('variables.css');
+@import url('layouts.css');
+@import url('components.css');
+@import url('responsive.css');
